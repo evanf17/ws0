@@ -31,13 +31,18 @@ echo '</p>';
 
 //eksekusi servis ke-4
 //0 input dikirim, return 1 objek didalamnya ada 3 output
+
+$nama = $_POST['nama'];
+$npm = $_POST['npm'];
+$agama = $_POST['agama'];
+$kelahiran = $_POST['kelahiran'];
+//eksekusi servis ke-1
+$input=array('nama'=>$nama,'npm'=>$npm, 'agama'=>$agama,'kelahiran'=>$kelahiran);
 echo '<p>';
-echo 'info nama='. $client2->info()->nama;
-echo '</br>';
-echo 'info nim='. $client2->info()->npm;
-echo '</br>';
-echo 'info agama='. $client2->info()->agama;
+echo $client2->setInfo($input);
 echo '</p>';
+
+
 
 //eksekusi servis ke-5
 $data=array('nama'=>'Iwan','npm'=>'45676','sks'=>9);

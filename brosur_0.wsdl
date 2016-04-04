@@ -28,6 +28,15 @@
       		</xsd:sequence>
       	</xsd:complexType>
       </xsd:element>
+            <xsd:complexType name="data"></xsd:complexType>
+            <xsd:complexType name="infodata">
+            	<xsd:sequence>
+            		<xsd:element name="nama" type="xsd:string"></xsd:element>
+            		<xsd:element name="npm" type="xsd:string"></xsd:element>
+            		<xsd:element name="agama" type="xsd:string"></xsd:element>
+            		<xsd:element name="kelahiran" type="xsd:int"></xsd:element>
+            	</xsd:sequence>
+            </xsd:complexType>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="helloRequest">
@@ -57,6 +66,12 @@
     <wsdl:message name="setMhsResponse">
     	<wsdl:part name="setMhsResponse" type="xsd:string"></wsdl:part>
     </wsdl:message>
+    <wsdl:message name="setInfoRequest">
+    	<wsdl:part name="setInfoRequest" type="tns:infodata"></wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="setInfoResponse">
+    	<wsdl:part name="setInfoResponse" type="xsd:string"></wsdl:part>
+    </wsdl:message>
     <wsdl:portType name="brosur_0">
     <wsdl:operation name="hello">
       <wsdl:input message="tns:helloRequest"/>
@@ -77,6 +92,10 @@
     <wsdl:operation name="setMhs">
     	<wsdl:input message="tns:setMhsRequest"></wsdl:input>
     	<wsdl:output message="tns:setMhsResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setInfo">
+    	<wsdl:input message="tns:setInfoRequest"></wsdl:input>
+    	<wsdl:output message="tns:setInfoResponse"></wsdl:output>
     </wsdl:operation>
     </wsdl:portType>
     <wsdl:binding name="brosur_0SOAP" type="tns:brosur_0">
@@ -125,6 +144,16 @@
     	<wsdl:operation name="setMhs">
     		<soap:operation
     			soapAction="http://www.example.org/brosur_0/setMhs" />
+    		<wsdl:input>
+    			<soap:body use="literal" />
+    		</wsdl:input>
+    		<wsdl:output>
+    			<soap:body use="literal" />
+    		</wsdl:output>
+    	</wsdl:operation>
+    	<wsdl:operation name="setInfo">
+    		<soap:operation
+    			soapAction="http://www.example.org/brosur_0/setInfo" />
     		<wsdl:input>
     			<soap:body use="literal" />
     		</wsdl:input>
